@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RepConnect | Dashboard</title>
+    <link rel="stylesheet" href="dashboard.css">
+    <link rel="stylesheet" href="nav-bar.css">
+    <link rel="website icon" type="png" href="RepConnect.png">
+    <script src="dashboard.js" defer></script>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-brand">
+            <img src="RepConnect.png" alt="RepConnect Logo" class="nav-logo">
+            <span class="nav-text">RepConnect</span>
+        </div>
+        <div class="nav-links">
+            <a href="dashboard.html" class="nav-link">Dashboard</a>
+            <a href="quiz.html" class="nav-link">Take the Quiz</a>
+        </div>
+    </nav>
+    <div class="container">
+        <h1 class="title">Dashboard</h1>
+        <p class="description">
+            This is your dashboard. Here you can see the information about your district and your elected representatives.
+        </p>
+        <div class="profile-info">
+            <!--Zip code, edit button to make it editable, and input field to change the zip code-->
+            <div class="profile-info-item">
+                <h2 class="profile-info-item-title" id="zipCodeTitle">Zip Code:</h2>
+                <input type="number" class="profile-info-item-input" value="12345" id="zipCodeInput" readonly>
+                <button class="profile-info-item-button" id="editZipCode">Edit</button>
+            </div>
+            <div class="profile-info-item">
+                <h2 class="profile-info-item-title" id="politicalOrientationTitle">Political Orientation:</h2>
+                <input type="text" class="profile-info-item-input" id="politicalOrientationInput" readonly>
+                <a href="quiz.html">
+                    <button class="profile-info-item-button" id="editPoliticalOrientation">Retake Quiz</button>
+                </a>
+            </div>
+            <div class="profile-info-item">
+                <h2 class="profile-info-item-title" id="quizScoreTitle">Quiz Score:</h2>
+                <input type="text" class="profile-info-item-input" id="quizScoreInput" readonly>
+                <button class="profile-info-item-button" id="editQuizScore">Retake Quiz</button>
+            </div>
+            <div class="profile-info-item">
+                <h2 class="profile-info-item-title" id="descriptionTitle">Description:</h2>
+                <input type="text" class="profile-info-item-input" id="descriptionInput" readonly>
+                <button class="profile-info-item-button" id="editDescription">Retake Quiz</button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
