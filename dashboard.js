@@ -7,6 +7,17 @@ function loadPoliticalOrientation() {
         try {
             const orientation = JSON.parse(savedOrientation);
             politicalOrientationInput.value = orientation.label;
+            
+            // Apply CSS class based on political orientation
+            politicalOrientationInput.classList.remove('liberal', 'moderate', 'conservative');
+            
+            if (orientation.category.includes('liberal')) {
+                politicalOrientationInput.classList.add('liberal');
+            } else if (orientation.category.includes('conservative')) {
+                politicalOrientationInput.classList.add('conservative');
+            } else {
+                politicalOrientationInput.classList.add('moderate');
+            }
         } catch (error) {
             politicalOrientationInput.value = 'Not Available';
         }
@@ -27,6 +38,17 @@ function loadDescription() {
             const description = JSON.parse(savedDescription);
             const descriptionText = description.description;
             descriptionInput.value = descriptionText;
+            
+            // Apply CSS class based on political orientation
+            descriptionInput.classList.remove('liberal', 'moderate', 'conservative');
+            
+            if (description.category.includes('liberal')) {
+                descriptionInput.classList.add('liberal');
+            } else if (description.category.includes('conservative')) {
+                descriptionInput.classList.add('conservative');
+            } else {
+                descriptionInput.classList.add('moderate');
+            }
         } catch (error) {
             descriptionInput.value = 'Not Available';
         }
@@ -215,6 +237,14 @@ function loadPublicFigures() {
             const category = orientation.category;
             const figures = publicFigures[category] || publicFigures['centrist'];
             
+            // Determine the political class for styling
+            let politicalClass = 'moderate';
+            if (category.includes('liberal')) {
+                politicalClass = 'liberal';
+            } else if (category.includes('conservative')) {
+                politicalClass = 'conservative';
+            }
+            
             figuresGrid.innerHTML = figures.map(figure => `
                 <div class="figure-card">
                     <div class="figure-header">
@@ -236,7 +266,7 @@ function loadPublicFigures() {
                         ${figure.tags.map(tag => `<span class="figure-tag">${tag}</span>`).join('')}
                     </div>
                     <div class="figure-actions">
-                        <a href="${figure.wiki}" target="_blank" class="figure-link">
+                        <a href="${figure.wiki}" target="_blank" class="figure-link ${politicalClass}">
                             Learn More on Wikipedia
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
@@ -435,6 +465,14 @@ function loadNewsSources() {
             const category = orientation.category;
             const sources = newsSources[category] || newsSources['centrist'];
             
+            // Determine the political class for styling
+            let politicalClass = 'moderate';
+            if (category.includes('liberal')) {
+                politicalClass = 'liberal';
+            } else if (category.includes('conservative')) {
+                politicalClass = 'conservative';
+            }
+            
             sourcesGrid.innerHTML = sources.map(source => `
                 <a href="${source.url}" target="_blank" class="source-card">
                     <div class="source-header">
@@ -455,7 +493,7 @@ function loadNewsSources() {
                     <div class="source-tags">
                         ${source.tags.map(tag => `<span class="source-tag">${tag}</span>`).join('')}
                     </div>
-                    <div class="source-link">
+                    <div class="source-link ${politicalClass}">
                         Visit Website
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />

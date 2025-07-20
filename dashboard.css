@@ -108,6 +108,21 @@ body {
     box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
 }
 
+.profile-info-item-input.liberal:focus {
+    border-color: #2563eb;
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+.profile-info-item-input.moderate:focus {
+    border-color: #6b7280;
+    box-shadow: 0 0 0 3px rgba(107, 114, 128, 0.1);
+}
+
+.profile-info-item-input.conservative:focus {
+    border-color: #dc2626;
+    box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.1);
+}
+
 .profile-info-item-input:read-only {
     background: #f8f9fa;
     color: #6b7280;
@@ -292,6 +307,30 @@ body {
     color: #2563eb;
 }
 
+.figure-link.liberal {
+    color: #2563eb;
+}
+
+.figure-link.liberal:hover {
+    color: #1d4ed8;
+}
+
+.figure-link.moderate {
+    color: #6b7280;
+}
+
+.figure-link.moderate:hover {
+    color: #4b5563;
+}
+
+.figure-link.conservative {
+    color: #dc2626;
+}
+
+.figure-link.conservative:hover {
+    color: #b91c1c;
+}
+
 .figure-link svg {
     width: 16px;
     height: 16px;
@@ -433,6 +472,30 @@ body {
 
 .source-link:hover {
     color: #2563eb;
+}
+
+.source-link.liberal {
+    color: #2563eb;
+}
+
+.source-link.liberal:hover {
+    color: #1d4ed8;
+}
+
+.source-link.moderate {
+    color: #6b7280;
+}
+
+.source-link.moderate:hover {
+    color: #4b5563;
+}
+
+.source-link.conservative {
+    color: #dc2626;
+}
+
+.source-link.conservative:hover {
+    color: #b91c1c;
 }
 
 .source-link svg {

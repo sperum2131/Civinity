@@ -278,8 +278,8 @@ function copyShareableLink(link) {
         if (copyBtn) {
             const originalTitle = copyBtn.getAttribute('title');
             copyBtn.setAttribute('title', 'Copied!');
-            copyBtn.style.background = '#3b82f6';
-            copyBtn.style.borderColor = '#3b82f6';
+            copyBtn.style.background = '#374151';
+            copyBtn.style.borderColor = '#374151';
             
             setTimeout(() => {
                 copyBtn.setAttribute('title', originalTitle);
