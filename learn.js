@@ -13,6 +13,14 @@ document.addEventListener('DOMContentLoaded', function() {
     // Set initial position
     updateMarkerPosition(currentPosition);
     
+    // Initialize the first label with proper class
+    const initialSpan = document.createElement('span');
+    initialSpan.textContent = 'Centrist';
+    initialSpan.style.color = '#6b7280';
+    initialSpan.className = 'current';
+    spectrumPosition.innerHTML = '';
+    spectrumPosition.appendChild(initialSpan);
+    
     // Mouse events for dragging
     spectrumMarker.addEventListener('mousedown', startDragging);
     document.addEventListener('mousemove', drag);
@@ -82,8 +90,37 @@ document.addEventListener('DOMContentLoaded', function() {
             color = '#991b1b';
         }
         
-        spectrumPosition.textContent = label;
-        spectrumPosition.style.color = color;
+        // Only animate if the label is actually changing
+        const currentSpan = spectrumPosition.querySelector('.current');
+        if (!currentSpan || currentSpan.textContent !== label) {
+            animateLabelChange(label, color);
+        }
+    }
+    
+    function animateLabelChange(newLabel, newColor) {
+        const currentSpan = spectrumPosition.querySelector('.current');
+        const newSpan = document.createElement('span');
+        
+        // Set up new span
+        newSpan.textContent = newLabel;
+        newSpan.style.color = newColor;
+        newSpan.className = 'sliding-in';
+        spectrumPosition.appendChild(newSpan);
+        
+        // Trigger animation
+        requestAnimationFrame(() => {
+            if (currentSpan) {
+                currentSpan.className = 'sliding-out';
+            }
+            newSpan.className = 'current';
+            
+            // Clean up old span after animation
+            setTimeout(() => {
+                if (currentSpan) {
+                    currentSpan.remove();
+                }
+            }, 300);
+        });
     }
     
     // Add smooth animation on page load

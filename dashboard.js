@@ -221,9 +221,9 @@ function loadPublicFigures() {
                         <div class="figure-avatar" style="background-color: ${figure.color};">
                             ${figure.avatarImage ? 
                                 `<img src="${figure.avatarImage}" alt="${figure.name}" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;">
-                                 <div style="display: none; width: 100%; height: 100%; align-items: center; justify-content: center; color: white; font-size: 1.5rem; font-weight: 600;">${figure.avatar}</div>` 
+                                 <div style="display: none; width: 100%; height: 100%; align-items: center; justify-content: center; color: white; font-size: 1.5rem; font-weight: 400;">${figure.avatar}</div>` 
                                 : 
-                                `<div style="display: flex; width: 100%; height: 100%; align-items: center; justify-content: center; color: white; font-size: 1.5rem; font-weight: 600;">${figure.avatar}</div>`
+                                `<div style="display: flex; width: 100%; height: 100%; align-items: center; justify-content: center; color: white; font-size: 1.5rem; font-weight: 400;">${figure.avatar}</div>`
                             }
                         </div>
                         <div>
@@ -441,9 +441,9 @@ function loadNewsSources() {
                         <div class="source-logo" style="${source.avatarImage ? 'background-color: transparent;' : `background-color: ${source.color};`} overflow: hidden;">
                             ${source.avatarImage ? 
                                 `<img src="${source.avatarImage}" alt="${source.name}" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'; this.parentElement.style.backgroundColor='${source.color}';" style="width: 100%; height: 100%; object-fit: cover; border-radius: 8px; position: absolute; top: 0; left: 0;">
-                                 <div style="display: none; width: 100%; height: 100%; align-items: center; justify-content: center; color: white; font-size: 1.2rem; font-weight: 600; position: absolute; top: 0; left: 0;">${source.logo}</div>` 
+                                 <div style="display: none; width: 100%; height: 100%; align-items: center; justify-content: center; color: white; font-size: 1.2rem; font-weight: 400; position: absolute; top: 0; left: 0;">${source.logo}</div>` 
                                 : 
-                                `<div style="display: flex; width: 100%; height: 100%; align-items: center; justify-content: center; color: white; font-size: 1.2rem; font-weight: 600;">${source.logo}</div>`
+                                `<div style="display: flex; width: 100%; height: 100%; align-items: center; justify-content: center; color: white; font-size: 1.2rem; font-weight: 400;">${source.logo}</div>`
                             }
                         </div>
                         <div>
