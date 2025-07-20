@@ -79,11 +79,15 @@ document.getElementById('submitBtn').addEventListener('click', function() {
     const result = calculatePoliticalOrientation();
     
     if (result) {
-        // Save to localStorage
-        localStorage.setItem('politicalOrientation', JSON.stringify(result));
+        // Save to localStorage with reversed score
+        const resultWithReversedScore = {
+            ...result,
+            score: result.score * -1
+        };
+        localStorage.setItem('politicalOrientation', JSON.stringify(resultWithReversedScore));
         
         // Display results
-        displayResults(result);
+        displayResults(resultWithReversedScore);
     } else {
         alert('Error calculating results. Please try again.');
     }
@@ -177,7 +181,7 @@ function displayResults(result) {
     
     // Generate shareable link with results
     const resultData = {
-        score: result.score,
+        score: result.score, // This is already the reversed score from above
         label: result.label,
         category: result.category,
         description: result.description
@@ -211,8 +215,8 @@ function displayResults(result) {
                         <div class="spectrum-fill" style="left: ${((result.score + 1) / 2) * 100}%"></div>
                     </div>
                     <div class="spectrum-labels">
-                        <span>Conservative</span>
                         <span>Liberal</span>
+                        <span>Conservative</span>
                     </div>
                 </div>
                 <div class="share-buttons">
@@ -242,13 +246,16 @@ function displayResults(result) {
 </svg>
                     </a>
                     <button class="share-button copy-link-btn" onclick="copyShareableLink('${shareableLink}')" title="Copy link">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                             <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
                             <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
                         </svg>
                     </button>
                 </div>
             </div>
+            <a href="dashboard.html" style="text-decoration: none;">
+                <button class="btn btn-secondary">Go to Dashboard</button>
+            </a>
             <button class="btn btn-primary" onclick="closeResults()">Close</button>
         </div>
     `;

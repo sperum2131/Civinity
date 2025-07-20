@@ -1,0 +1,425 @@
+@import url('https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300..900;1,300..900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Figtree', sans-serif;
+    font-weight: 400;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+body {
+    background-color: #ffffff;
+    color: #1a1a1a;
+    line-height: 1.6;
+    background-image: 
+        linear-gradient(90deg, #f3f4f6 1px, transparent 1px);
+    background-size: 300px 100%;
+    background-position: 0 0;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    width: 100%;
+    min-height: 100vh;
+    padding: 100px 20px 60px 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.title {
+    font-family: 'Figtree', sans-serif;
+    font-size: 2.5rem;
+    text-align: center;
+    margin-bottom: 20px;
+    color: #1a1a1a;
+    animation: slideUp 0.4s ease-out;
+    line-height: 1.2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 30px;
+}
+
+.description {
+    font-family: 'Figtree', sans-serif;
+    font-size: 1.1rem;
+    text-align: center;
+    color: #6b7280;
+    margin-bottom: 50px;
+    max-width: 600px;
+    line-height: 1.6;
+    animation: slideUp 0.4s ease-out 0.1s both;
+}
+
+/* Spectrum Section */
+.spectrum-section {
+    width: 100%;
+    max-width: 1000px;
+    margin: 0 auto;
+    animation: slideUp 0.4s ease-out 0.2s both;
+}
+
+.section-title {
+    font-size: 2rem;
+    text-align: center;
+    margin-bottom: 40px;
+    color: #1a1a1a;
+    font-weight: 600;
+}
+
+/* Interactive Spectrum */
+.spectrum-container {
+    background: white;
+    border-radius: 16px;
+    padding: 40px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    margin-bottom: 50px;
+    border: 1px solid #e5e7eb;
+}
+
+.spectrum-labels {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    font-weight: 600;
+    color: #374151;
+}
+
+.spectrum-label.left {
+    color: #2563eb;
+}
+
+.spectrum-label.right {
+    color: #dc2626;
+}
+
+.spectrum-bar {
+    position: relative;
+    height: 8px;
+    background: linear-gradient(to right, #2563eb, #6b7280, #dc2626);
+    border-radius: 4px;
+    margin-bottom: 20px;
+    cursor: pointer;
+}
+
+.spectrum-marker {
+    position: absolute;
+    top: -8px;
+    width: 24px;
+    height: 24px;
+    background: white;
+    border: 2px solid #e5e7eb;
+    border-radius: 50%;
+    transform: translateX(-50%);
+    transition: left 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+    cursor: grab;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.spectrum-marker:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    transform: translateX(-50%);
+}
+
+.spectrum-marker:active {
+    cursor: grabbing;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.25);
+    transform: translateX(-50%);
+}
+
+.spectrum-position {
+    text-align: center;
+    font-weight: 600;
+    font-size: 1.1rem;
+    color: #374151;
+}
+
+/* Policy Examples */
+.policy-examples {
+    margin-bottom: 50px;
+}
+
+.policy-examples h3 {
+    font-size: 1.5rem;
+    margin-bottom: 30px;
+    text-align: center;
+    color: #1a1a1a;
+}
+
+.policy-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+}
+
+.policy-card {
+    background: white;
+    border-radius: 12px;
+    padding: 30px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border: 1px solid #e5e7eb;
+}
+
+.policy-card.liberal {
+    border-left: 4px solid #2563eb;
+}
+
+.policy-card.conservative {
+    border-left: 4px solid #dc2626;
+}
+
+.policy-card h4 {
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+    font-weight: 600;
+}
+
+.policy-item {
+    margin-bottom: 15px;
+    padding: 10px 0;
+    border-bottom: 1px solid #f3f4f6;
+}
+
+.policy-item:last-child {
+    border-bottom: none;
+}
+
+/* History Section */
+.history-section {
+    margin-bottom: 50px;
+}
+
+.history-section h3 {
+    font-size: 1.5rem;
+    margin-bottom: 30px;
+    text-align: center;
+    color: #1a1a1a;
+}
+
+.timeline {
+    position: relative;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.timeline::before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: #e5e7eb;
+    transform: translateX(-50%);
+}
+
+.timeline-item {
+    position: relative;
+    margin-bottom: 40px;
+    display: flex;
+    align-items: center;
+}
+
+.timeline-item:nth-child(odd) {
+    flex-direction: row;
+}
+
+.timeline-item:nth-child(even) {
+    flex-direction: row-reverse;
+}
+
+.timeline-date {
+    background: #1f2937;
+    color: white;
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 2;
+}
+
+.timeline-content {
+    background: white;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    width: 45%;
+    border: 1px solid #e5e7eb;
+}
+
+.timeline-item:nth-child(odd) .timeline-content {
+    margin-left: 55%;
+}
+
+.timeline-item:nth-child(even) .timeline-content {
+    margin-right: 55%;
+}
+
+.timeline-content h4 {
+    font-size: 1.1rem;
+    margin-bottom: 10px;
+    color: #1a1a1a;
+    font-weight: 600;
+}
+
+/* Misconceptions Section */
+.misconceptions-section {
+    margin-bottom: 50px;
+}
+
+.misconceptions-section h3 {
+    font-size: 1.5rem;
+    margin-bottom: 30px;
+    text-align: center;
+    color: #1a1a1a;
+}
+
+.misconception-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 25px;
+}
+
+.misconception-card {
+    background: white;
+    border-radius: 12px;
+    padding: 25px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border: 1px solid #e5e7eb;
+}
+
+.misconception-card h4 {
+    font-size: 1.1rem;
+    margin-bottom: 15px;
+    color: #dc2626;
+    font-weight: 600;
+}
+
+/* Principles Section */
+.principles-section {
+    margin-bottom: 50px;
+}
+
+.principles-section h3 {
+    font-size: 1.5rem;
+    margin-bottom: 30px;
+    text-align: center;
+    color: #1a1a1a;
+}
+
+.principles-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 25px;
+}
+
+.principle-card {
+    background: white;
+    border-radius: 12px;
+    padding: 30px;
+    text-align: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border: 1px solid #e5e7eb;
+    transition: transform 0.2s ease;
+}
+
+.principle-card:hover {
+    transform: translateY(-2px);
+}
+
+.principle-icon {
+    margin-bottom: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.principle-icon svg {
+    width: 48px;
+    height: 48px;
+    transition: transform 0.2s ease;
+}
+
+.principle-card:hover .principle-icon svg {
+    transform: scale(1.1);
+}
+
+.principle-card h4 {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+    color: #1a1a1a;
+    font-weight: 600;
+}
+
+/* Animations */
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .container {
+        padding: 80px 15px 40px 15px;
+    }
+    
+    .title {
+        font-size: 2rem;
+    }
+    
+    .section-title {
+        font-size: 1.5rem;
+    }
+    
+    .spectrum-container {
+        padding: 25px;
+    }
+    
+    .policy-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    
+    .timeline::before {
+        left: 20px;
+    }
+    
+    .timeline-item {
+        flex-direction: row !important;
+    }
+    
+    .timeline-date {
+        left: 20px;
+        transform: none;
+    }
+    
+    .timeline-content {
+        width: calc(100% - 60px);
+        margin-left: 60px !important;
+        margin-right: 0 !important;
+    }
+    
+    .misconception-grid,
+    .principles-grid {
+        grid-template-columns: 1fr;
+    }
+}
