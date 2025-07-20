@@ -36,27 +36,6 @@ function loadPoliticalOrientation() {
 // Initialize political orientation on page load
 loadPoliticalOrientation();
 
-// Load quiz score from localStorage
-function loadQuizScore() {
-    const savedOrientation = localStorage.getItem('politicalOrientation');
-    const quizScoreInput = document.getElementById('quizScoreInput');
-    
-    if (savedOrientation) {
-        try {
-            const orientation = JSON.parse(savedOrientation);
-            const scorePercentage = (orientation.score * 100).toFixed(0);
-            quizScoreInput.value = `${scorePercentage}%`;
-        } catch (error) {
-            quizScoreInput.value = 'Not Available';
-        }
-    } else {
-        quizScoreInput.value = 'Not Available';
-    }
-}
-
-// Initialize quiz score on page load
-loadQuizScore();
-
 function loadDescription() {
     const savedDescription = localStorage.getItem('politicalOrientation');
     const descriptionInput = document.getElementById('descriptionInput');
