@@ -2,7 +2,7 @@
 
 Civinity allows you to learn more about the political spectrum and your stance, as well as the current scope of politics.
 
-Civinity has 4 pages: Quiz, Dashboard, Political Spectrum, and Debate
+Civinity has 4 pages: Quiz, Dashboard, Political Spectrum, and Debate.
 
 ### Quiz
 ![Quiz](quiz.png)
