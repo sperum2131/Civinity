@@ -1,5 +1,7 @@
+/* Import Figtree font */
 @import url('https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300..900;1,300..900&display=swap');
 
+/* Remove default styling */
 * {
     margin: 0;
     padding: 0;
@@ -7,12 +9,14 @@
     font-weight: 400;
 }
 
+/* Remove the spin button for number inputs */
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
 
+/* Body */
 body {
     background-color: #ffffff;
     color: #1a1a1a;
@@ -23,6 +27,7 @@ body {
     background-position: 0 0;
 }
 
+/* Container for the political spectrum page */
 .container {
     display: flex;
     flex-direction: column;
@@ -35,6 +40,7 @@ body {
     margin: 0 auto;
 }
 
+/* Title - emphasized */
 .title {
     font-family: 'Figtree', sans-serif;
     font-size: 2.5rem;
@@ -50,6 +56,7 @@ body {
     margin-top: 30px;
 }
 
+/* Description - not emphasized */
 .description {
     font-family: 'Figtree', sans-serif;
     font-size: 1.1rem;
@@ -61,7 +68,7 @@ body {
     animation: slideUp 0.4s ease-out 0.1s both;
 }
 
-/* Spectrum Section */
+/* Spectrum section */
 .spectrum-section {
     width: 100%;
     max-width: 1000px;
@@ -69,6 +76,7 @@ body {
     animation: slideUp 0.4s ease-out 0.2s both;
 }
 
+/* Section title */
 .section-title {
     font-size: 2rem;
     text-align: center;
@@ -77,7 +85,7 @@ body {
     font-weight: 400;
 }
 
-/* Interactive Spectrum */
+/* Interactive spectrum container */
 .spectrum-container {
     background: white;
     border-radius: 16px;
@@ -87,6 +95,7 @@ body {
     border: 1px solid #e5e7eb;
 }
 
+/* Spectrum labels */
 .spectrum-labels {
     display: flex;
     justify-content: space-between;
@@ -95,14 +104,17 @@ body {
     color: #374151;
 }
 
+/* Left label */
 .spectrum-label.left {
     color: #2563eb;
 }
 
+/* Right label */
 .spectrum-label.right {
     color: #dc2626;
 }
 
+/* Interactive spectrum slider */
 .spectrum-bar {
     position: relative;
     height: 8px;
@@ -112,6 +124,7 @@ body {
     cursor: pointer;
 }
 
+/* Thumb for the slider */
 .spectrum-marker {
     position: absolute;
     top: -8px;
@@ -126,17 +139,20 @@ body {
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
 }
 
+/* Hover effect for the thumb */
 .spectrum-marker:hover {
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
     transform: translateX(-50%);
 }
 
+/* Active effect for the thumb */
 .spectrum-marker:active {
     cursor: grabbing;
     box-shadow: 0 6px 16px rgba(0, 0, 0, 0.25);
     transform: translateX(-50%);
 }
 
+/* Position of the thumb */
 .spectrum-position {
     text-align: center;
     font-weight: 400;
@@ -148,6 +164,7 @@ body {
     height: 1.5rem;
 }
 
+/* Each position */
 .spectrum-position span {
     display: block;
     transition: transform 0.3s ease, opacity 0.3s ease;
@@ -157,26 +174,30 @@ body {
     top: 0;
 }
 
+/* Sliding out effect */
 .spectrum-position span.sliding-out {
     transform: translateY(-100%);
     opacity: 0;
 }
 
+/* Sliding in effect */
 .spectrum-position span.sliding-in {
     transform: translateY(100%);
     opacity: 0;
 }
 
+/* Current position */
 .spectrum-position span.current {
     transform: translateY(0);
     opacity: 1;
 }
 
-/* Policy Examples */
+/* Policy examples */
 .policy-examples {
     margin-bottom: 50px;
 }
 
+/* Policy examples title */
 .policy-examples h3 {
     font-size: 1.5rem;
     margin-bottom: 30px;
@@ -184,12 +205,14 @@ body {
     color: #1a1a1a;
 }
 
+/* Policy examples grid */
 .policy-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 30px;
 }
 
+/* Policy card */
 .policy-card {
     background: white;
     border-radius: 12px;
@@ -199,20 +222,24 @@ body {
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
+/* Hover effect for the policy card */
 .policy-card:hover {
     box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
     border-color: #d1d5db;
     transform: translateY(-2px);
 }
 
+/* Liberal policy card */
 .policy-card.liberal h4 {
     color: #2563eb;
 }
 
+/* Conservative policy card */
 .policy-card.conservative h4 {
     color: #dc2626;
 }
 
+/* Policy card title */
 .policy-card h4 {
     font-size: 1.3rem;
     margin-bottom: 20px;
@@ -220,6 +247,12 @@ body {
     text-align: center;
 }
 
+/* Policy item title */
+.policy-item strong {
+    font-weight: 600;
+}
+
+/* Policy item */
 .policy-item {
     margin-bottom: 16px;
     padding: 12px 16px;
@@ -229,21 +262,24 @@ body {
     transition: all 0.2s ease;
 }
 
+/* Hover effect for the policy item */
 .policy-item:hover {
     background: #f1f5f9;
     border-color: #d1d5db;
     transform: translateX(2px);
 }
 
+/* Last policy item */
 .policy-item:last-child {
     margin-bottom: 0;
 }
 
-/* History Section */
+/* History section */
 .history-section {
     margin-bottom: 50px;
 }
 
+/* History section title */
 .history-section h3 {
     font-size: 1.5rem;
     margin-bottom: 30px;
@@ -251,12 +287,14 @@ body {
     color: #1a1a1a;
 }
 
+/* Timeline */
 .timeline {
     position: relative;
     max-width: 800px;
     margin: 0 auto;
 }
 
+/* Timeline before */
 .timeline::before {
     content: '';
     position: absolute;
@@ -268,6 +306,7 @@ body {
     transform: translateX(-50%);
 }
 
+/* Timeline item */
 .timeline-item {
     position: relative;
     margin-bottom: 40px;
@@ -275,14 +314,17 @@ body {
     align-items: center;
 }
 
+/* Timeline item odd */
 .timeline-item:nth-child(odd) {
     flex-direction: row;
 }
 
+/* Timeline item even */
 .timeline-item:nth-child(even) {
     flex-direction: row-reverse;
 }
 
+/* Timeline date */
 .timeline-date {
     background: #1f2937;
     color: white;
@@ -296,6 +338,7 @@ body {
     z-index: 2;
 }
 
+/* Timeline content */
 .timeline-content {
     background: white;
     padding: 25px;
@@ -305,14 +348,17 @@ body {
     border: 1px solid #e5e7eb;
 }
 
+/* Timeline item odd content */
 .timeline-item:nth-child(odd) .timeline-content {
     margin-left: 55%;
 }
 
+/* Timeline item even content */
 .timeline-item:nth-child(even) .timeline-content {
     margin-right: 55%;
 }
 
+/* Timeline content title */
 .timeline-content h4 {
     font-size: 1.1rem;
     margin-bottom: 10px;
@@ -320,11 +366,12 @@ body {
     font-weight: 400;
 }
 
-/* Misconceptions Section */
+/* Misconceptions section */
 .misconceptions-section {
     margin-bottom: 50px;
 }
 
+/* Misconceptions section title */
 .misconceptions-section h3 {
     font-size: 1.5rem;
     margin-bottom: 30px;
@@ -332,12 +379,14 @@ body {
     color: #1a1a1a;
 }
 
+/* Misconception grid */
 .misconception-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 25px;
 }
 
+/* Misconception card */
 .misconception-card {
     background: white;
     border-radius: 12px;
@@ -346,6 +395,7 @@ body {
     border: 1px solid #e5e7eb;
 }
 
+/* Misconception card title */
 .misconception-card h4 {
     font-size: 1.1rem;
     margin-bottom: 15px;
@@ -353,11 +403,12 @@ body {
     font-weight: 400;
 }
 
-/* Principles Section */
+/* Principles section */
 .principles-section {
     margin-bottom: 50px;
 }
 
+/* Principles section title */
 .principles-section h3 {
     font-size: 1.5rem;
     margin-bottom: 30px;
@@ -365,12 +416,14 @@ body {
     color: #1a1a1a;
 }
 
+/* Principles grid */
 .principles-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 25px;
 }
 
+/* Principle card */
 .principle-card {
     background: white;
     border-radius: 12px;
@@ -381,10 +434,12 @@ body {
     transition: transform 0.2s ease;
 }
 
+/* Hover effect for the principle card */
 .principle-card:hover {
     transform: translateY(-2px);
 }
 
+/* Principle icon */
 .principle-icon {
     margin-bottom: 15px;
     display: flex;
@@ -392,16 +447,19 @@ body {
     align-items: center;
 }
 
+/* Principle icon svg */
 .principle-icon svg {
     width: 48px;
     height: 48px;
     transition: transform 0.2s ease;
 }
 
+/* Hover effect for the principle icon svg */
 .principle-card:hover .principle-icon svg {
     transform: scale(1.1);
 }
 
+/* Principle card title */
 .principle-card h4 {
     font-size: 1.2rem;
     margin-bottom: 10px;
@@ -409,7 +467,7 @@ body {
     font-weight: 400;
 }
 
-/* Animations */
+/* Slide up animation */
 @keyframes slideUp {
     from {
         opacity: 0;
@@ -418,53 +476,5 @@ body {
     to {
         opacity: 1;
         transform: translateY(0);
-    }
-}
-
-/* Responsive Design */
-@media (max-width: 768px) {
-    .container {
-        padding: 80px 15px 40px 15px;
-    }
-    
-    .title {
-        font-size: 2rem;
-    }
-    
-    .section-title {
-        font-size: 1.5rem;
-    }
-    
-    .spectrum-container {
-        padding: 25px;
-    }
-    
-    .policy-grid {
-        grid-template-columns: 1fr;
-        gap: 20px;
-    }
-    
-    .timeline::before {
-        left: 20px;
-    }
-    
-    .timeline-item {
-        flex-direction: row !important;
-    }
-    
-    .timeline-date {
-        left: 20px;
-        transform: none;
-    }
-    
-    .timeline-content {
-        width: calc(100% - 60px);
-        margin-left: 60px !important;
-        margin-right: 0 !important;
-    }
-    
-    .misconception-grid,
-    .principles-grid {
-        grid-template-columns: 1fr;
     }
 }

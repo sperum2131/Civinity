@@ -1,13 +1,13 @@
 // AI Debate Chatbot with Groq API
-const GROQ_API_KEY = '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';
-const GROQ_API_URL = 'https://api.groq.com/openai/v1/chat/completions';
+const GROQ_API_KEY = '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'; // API key for Groq API
+const GROQ_API_URL = 'https://api.groq.com/openai/v1/chat/completions'; // Base URL for Groq API
 
 // Debate state
 let currentTopic = '';
 let userIdeology = '';
 let debateHistory = [];
 
-// Topic configurations
+// 9 most controversial topics for the user to debate about
 const topics = {
     healthcare: {
         name: 'Healthcare',
@@ -65,6 +65,7 @@ const topics = {
     }
 };
 
+// When the page loads, get the user's political orientation and add event listeners
 document.addEventListener('DOMContentLoaded', function() {
     // Load user's political orientation
     loadUserIdeology();
@@ -76,6 +77,7 @@ document.addEventListener('DOMContentLoaded', function() {
     initializeDebate();
 });
 
+// Check local storage for the user's political orientation
 function loadUserIdeology() {
     const savedOrientation = localStorage.getItem('politicalOrientation');
     if (savedOrientation) {
@@ -86,12 +88,13 @@ function loadUserIdeology() {
             userIdeology = 'centrist';
         }
     } else {
-        userIdeology = 'centrist';
+        userIdeology = 'centrist'; // Default to centrist if nothing is found
     }
 }
 
+// Add event listeners to the topic buttons and message input
 function setupEventListeners() {
-    // Topic selection
+    // CHoose a topic
     document.querySelectorAll('.topic-btn').forEach(btn => {
         btn.addEventListener('click', function() {
             const topic = this.dataset.topic;
@@ -99,7 +102,7 @@ function setupEventListeners() {
         });
     });
     
-    // Message input
+    // Message input box
     const messageInput = document.getElementById('messageInput');
     const sendButton = document.getElementById('sendButton');
     
@@ -111,26 +114,29 @@ function setupEventListeners() {
     });
 }
 
+// Select a topic
 function selectTopic(topic) {
     currentTopic = topic;
     
-    // Update UI
+    // Update the UI to show the debate interface
     document.getElementById('debateSetup').style.display = 'none';
     document.getElementById('debateInterface').style.display = 'block';
     
+    // Update the topic title and description
     document.getElementById('currentTopic').textContent = topics[topic].name + ' Debate';
     document.getElementById('topicDescription').textContent = topics[topic].description;
     
-    // Clear chat
+    // Clear the chat
     document.getElementById('chatMessages').innerHTML = '';
     
-    // Add welcome message
+    // Add welcome message to the chat
     addMessage('ai', getWelcomeMessage(topic));
     
-    // Scroll to interface
+    // Scroll to the debate interface
     document.getElementById('debateInterface').scrollIntoView({ behavior: 'smooth' });
 }
 
+// Get the welcome message for the debate
 function getWelcomeMessage(topic) {
     const topicConfig = topics[topic];
     const oppositePosition = getOppositePosition(userIdeology, topic);
@@ -146,19 +152,22 @@ I'm here to engage in healthy debate, so I'll:
 What's your stance on ${topicConfig.name.toLowerCase()}?`;
 }
 
+// Get the opposite position for the user to debate about
 function getOppositePosition(userIdeology, topic) {
     const topicConfig = topics[topic];
     
+    // If the user is liberal, the AI will be conservative
     if (userIdeology.includes('liberal')) {
         return 'conservative';
     } else if (userIdeology.includes('conservative')) {
         return 'liberal';
     } else {
-        // For centrists, randomly choose a position
+        // CHoose between the 2 positions randomly for centrists
         return Math.random() > 0.5 ? 'liberal' : 'conservative';
     }
 }
 
+// Send a message to the AI
 function sendMessage() {
     const messageInput = document.getElementById('messageInput');
     const message = messageInput.value.trim();
@@ -178,6 +187,7 @@ function sendMessage() {
     sendToGroq(message);
 }
 
+// Add a message to the chat
 function addMessage(sender, content) {
     const chatMessages = document.getElementById('chatMessages');
     const messageDiv = document.createElement('div');
@@ -186,7 +196,7 @@ function addMessage(sender, content) {
     const avatar = document.createElement('div');
     avatar.className = 'message-avatar';
     
-    // Use SVG icons instead of emojis
+    // Use Google Fonts SVGs for avatars
     if (sender === 'user') {
         avatar.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="currentColor">
             <path d="M480-480q-66 0-113-47t-47-113q0-66 47-113t113-47q66 0 113 47t47 113q0 66-47 113t-113 47ZM160-160v-112q0-34 17.5-62.5T224-378q62-31 126-46.5T480-440q66 0 130 15.5T736-378q29 15 46.5 43.5T800-272v112H160Z"/>
@@ -217,6 +227,7 @@ function addMessage(sender, content) {
     debateHistory.push({ role: sender === 'user' ? 'user' : 'assistant', content });
 }
 
+// Format the AI response
 function formatAIResponse(content) {
     // Convert markdown-style formatting to HTML
     let formatted = content;
@@ -265,6 +276,7 @@ function formatAIResponse(content) {
     return paragraphs.join('');
 }
 
+// Show the loading dots
 function showLoading() {
     const chatMessages = document.getElementById('chatMessages');
     const loadingDiv = document.createElement('div');
@@ -293,6 +305,7 @@ function showLoading() {
     chatMessages.scrollTop = chatMessages.scrollHeight;
 }
 
+// Main function to send message to Groq API
 async function sendToGroq(userMessage) {
     try {
         const topicConfig = topics[currentTopic];
@@ -316,6 +329,7 @@ User's position: ${userIdeology.includes('liberal') ? 'liberal' : userIdeology.i
 
 Remember: The goal is healthy debate, not winning arguments.`;
 
+        // Send the message to Groq API
         const response = await fetch(GROQ_API_URL, {
             method: 'POST',
             headers: {
@@ -326,7 +340,7 @@ Remember: The goal is healthy debate, not winning arguments.`;
                 model: 'llama-3.3-70b-versatile',
                 messages: [
                     { role: 'system', content: systemPrompt },
-                    ...debateHistory.slice(-6), // Keep last 6 messages for context
+                    ...debateHistory.slice(-6), // 6 last messages for context for the AI to know the conversation
                     { role: 'user', content: userMessage }
                 ],
                 max_tokens: 400,
@@ -334,6 +348,7 @@ Remember: The goal is healthy debate, not winning arguments.`;
             })
         });
 
+        // If the response is not ok, throw an error
         if (!response.ok) {
             throw new Error(`HTTP error! status: ${response.status}`);
         }
@@ -364,7 +379,7 @@ Remember: The goal is healthy debate, not winning arguments.`;
     }
 }
 
-// Tool functions
+// Fact check button
 function requestFactCheck() {
     const factCheckPrompt = `Please provide a fact check for the current debate topic: ${topics[currentTopic].name}. Include reliable sources and data that support both perspectives. Format your response with headers (###) for each section and bullet points (•) for key facts.`;
     
@@ -373,6 +388,7 @@ function requestFactCheck() {
     sendToGroq(factCheckPrompt);
 }
 
+// Common ground button
 function requestCommonGround() {
     const commonGroundPrompt = `What are some areas of potential common ground between liberal and conservative positions on ${topics[currentTopic].name}? Focus on shared values and goals. Use bullet points (•) to list common areas.`;
     
@@ -381,6 +397,7 @@ function requestCommonGround() {
     sendToGroq(commonGroundPrompt);
 }
 
+// Explanation button
 function requestExplanation() {
     const explanationPrompt = `Please explain the key concepts and terminology related to ${topics[currentTopic].name} in simple terms that someone new to this topic would understand. Use headers (###) for different concepts and bullet points (•) for key points.`;
     
@@ -389,6 +406,7 @@ function requestExplanation() {
     sendToGroq(explanationPrompt);
 }
 
+// Start a new debate
 function startNewDebate() {
     // Reset to topic selection
     document.getElementById('debateInterface').style.display = 'none';
@@ -402,6 +420,7 @@ function startNewDebate() {
     document.getElementById('debateSetup').scrollIntoView({ behavior: 'smooth' });
 }
 
+// Start the debate interface
 function initializeDebate() {
     // Add keyboard shortcuts
     document.addEventListener('keydown', function(e) {

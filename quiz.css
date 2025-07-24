@@ -1,5 +1,7 @@
+/* Import Figtree font */
 @import url('https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300..900;1,300..900&display=swap');
 
+/* Remove default styling */
 * {
     margin: 0;
     padding: 0;
@@ -7,6 +9,7 @@
     font-weight: 400;
 }
 
+/* Set body styling */
 body {
     background-color: #ffffff;
     color: #1a1a1a;
@@ -17,7 +20,7 @@ body {
     background-position: 0 0;
 }
 
-
+/* Container for the quiz*/
 .container {
     display: flex;
     flex-direction: column;
@@ -30,6 +33,7 @@ body {
     margin: 0 auto;
 }
 
+/* Title is emphasized */
 .title {
     font-family: 'Figtree', sans-serif;
     font-size: 2.5rem;
@@ -45,6 +49,7 @@ body {
     margin-top: 30px;
 }
 
+/* Description is grayed out */
 .description {
     font-family: 'Figtree', sans-serif;
     font-size: 1.1rem;
@@ -56,12 +61,14 @@ body {
     animation: slideUp 0.4s ease-out 0.1s both;
 }
 
+/* Questions container with animation */
 .questions-container {
     animation: slideUp 0.4s ease-out 0.1s both;
     max-width: 900px;
     width: 100%;
 }
 
+/* Each question */
 .question {
     margin-bottom: 50px;
     padding: 0;
@@ -70,6 +77,7 @@ body {
     box-shadow: none;
 }
 
+/* Question title */
 .question-title {
     font-family: 'Figtree', sans-serif;
     font-size: 1.25rem;
@@ -79,12 +87,14 @@ body {
     text-align: center;
 }
 
+/* Question options */
 .question-options {
     display: flex;
     flex-direction: column;
     gap: 16px;
 }
 
+/* Each question option */
 .question-option {
     display: flex;
     align-items: center;
@@ -97,6 +107,7 @@ body {
     position: relative;
 }
 
+/* Question option input */
 .question-option input[type="radio"] {
     margin-right: 16px;
     transform: scale(1.3);
@@ -105,6 +116,7 @@ body {
     pointer-events: none;
 }
 
+/* Question option label */
 .question-option label {
     font-size: 1rem;
     color: #374151;
@@ -114,6 +126,7 @@ body {
     pointer-events: none;
 }
 
+/* Question option hover */
 .question-option:hover {
     border-color: #6b7280;
     background: #f8fafc;
@@ -121,12 +134,14 @@ body {
     box-shadow: 0 4px 12px rgba(107, 114, 128, 0.1);
 }
 
+/* Question option input */
 .question-option input[type="radio"] {
     margin-right: 16px;
     transform: scale(1.3);
     accent-color: #6b7280;
 }
 
+/* Question option label */
 .question-option label {
     font-size: 1rem;
     color: #374151;
@@ -135,10 +150,12 @@ body {
     font-family: 'Figtree', sans-serif;
 }
 
+/* Question option input checked label */
 .question-option input[type="radio"]:checked + label {
     color: #1f2937;
 }
 
+/* Button container */
 .button-container {
     display: flex;
     justify-content: center;
@@ -148,6 +165,7 @@ body {
     animation: slideUp 0.4s ease-out 0.2s both;
 }
 
+/* Button */
 .btn {
     padding: 15px 30px;
     border-radius: 50px;
@@ -159,30 +177,35 @@ body {
     width: 200px;
 }
 
+/* Primary button */
 .btn-primary {
     background-color: #000000;
     color: #ffffff;
     border: 2px solid #000000;
 }
 
+/* Primary button hover */
 .btn-primary:hover {
     background-color: #1a1a1a;
     transform: translateY(-1px);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
+/* Secondary button */
 .btn-secondary {
     background-color: #ffffff;
     color: #000000;
     border: 2px solid #000000;
 }
 
+/* Secondary button hover */
 .btn-secondary:hover {
     background-color: #f8f9fa;
     transform: translateY(-1px);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
+/* Unanswered */
 .unanswered {
     border-color: #ef4444 !important;
     animation: shake 0.5s ease-in-out;
@@ -198,6 +221,7 @@ body {
     90% { transform: translateX(3px); }
 }
 
+/* Results modal */
 .results-modal {
     position: fixed;
     top: 0;
@@ -212,6 +236,7 @@ body {
     animation: fadeIn 0.3s ease-out;
 }
 
+/* Results content */
 .results-content {
     background: white;
     padding: 40px;
@@ -223,6 +248,7 @@ body {
     animation: slideUp 0.4s ease-out;
 }
 
+/* Results content title */
 .results-content h2 {
     font-family: 'Figtree', sans-serif;
     font-size: 2rem;
@@ -230,6 +256,7 @@ body {
     color: #1a1a1a;
 }
 
+/* Result category title */
 .result-category h3 {
     font-family: 'Figtree', sans-serif;
     font-size: 1.5rem;
@@ -237,6 +264,7 @@ body {
     color: #1a1a1a;
 }
 
+/* Result category description */
 .result-category p {
     font-family: 'Figtree', sans-serif;
     font-size: 1rem;
@@ -245,16 +273,19 @@ body {
     line-height: 1.6;
 }
 
+/* Score display */
 .score-display {
     margin: 30px 0;
 }
 
+/* Score display span */
 .score-display span {
     font-family: 'Figtree', sans-serif;
     color: #1a1a1a;
     font-size: 1.1rem;
 }
 
+/* Spectrum bar */
 .spectrum-bar {
     width: 100%;
     height: 8px;
@@ -264,6 +295,7 @@ body {
     position: relative;
 }
 
+/* Spectrum fill */
 .spectrum-fill {
     position: absolute;
     top: 0;
@@ -275,6 +307,7 @@ body {
     transition: left 0.5s ease;
 }
 
+/* Spectrum labels */
 .spectrum-labels {
     display: flex;
     justify-content: space-between;
@@ -284,11 +317,13 @@ body {
     margin-top: 10px;
 }
 
+/* Fade in */
 @keyframes fadeIn {
     from { opacity: 0; }
     to { opacity: 1; }
 }
 
+/* Slide up */
 @keyframes slideUp {
     from {
         opacity: 0;
@@ -300,7 +335,7 @@ body {
     }
 }
 
-/* Share Section Styling */
+/* Share section */
 .share-buttons {
     display: flex;
     justify-content: center;
@@ -309,6 +344,7 @@ body {
     flex-wrap: wrap;
 }
 
+/* Share button */
 .share-button {
     display: flex;
     align-items: center;
@@ -325,82 +361,91 @@ body {
     cursor: pointer;
 }
 
+/* Share button hover */
 .share-button:hover {
     transform: translateY(-2px);
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
     border-color: #9ca3af;
 }
 
+/* Share button active */
 .share-button:active {
     transform: translateY(0);
 }
 
-/* Twitter/X Button */
+/* Twitter/X button */
 .share-button:nth-child(1) {
     background: #000000;
     border-color: #000000;
 }
 
+/* Twitter/X button hover */
 .share-button:nth-child(1):hover {
     background: #1a1a1a;
     border-color: #1a1a1a;
 }
 
+/* Twitter/X button svg */
 .share-button:nth-child(1) svg {
     filter: brightness(0) invert(1);
 }
 
-/* Reddit Button */
+/* Reddit button */
 .share-button:nth-child(2) {
     background: #ff4500;
     border-color: #ff4500;
 }
 
+/* Reddit button hover */
 .share-button:nth-child(2):hover {
     background: #e63900;
     border-color: #e63900;
 }
 
-/* WhatsApp Button */
+/* WhatsApp button */
 .share-button:nth-child(3) {
     background: #25d366;
     border-color: #25d366;
 }
 
+/* WhatsApp button hover */
 .share-button:nth-child(3):hover {
     background: #22c55e;
     border-color: #22c55e;
 }
 
-/* Copy Link Button */
+/* Copy link button */
 .share-button:nth-child(4) {
     background: #6b7280;
     border-color: #6b7280;
 }
 
+/* Copy link button hover */
 .share-button:nth-child(4):hover {
     background: #4b5563;
     border-color: #4b5563;
 }
 
+/* Copy link button svg */
 .share-button:nth-child(4) svg {
     filter: brightness(0) invert(1);
     width: 16px;
     height: 16px;
 }
 
-/* SVG Styling */
+/* SVG styling */
 .share-button svg {
     width: 20px;
     height: 20px;
     transition: transform 0.2s ease;
 }
 
+/* SVG hover */
 .share-button:hover svg {
     transform: scale(1.05);
 }
 
-/* Share Section Label */
+/* Share section label */
 .share-buttons::before {
     content: "Share your results:";
     display: block;
@@ -412,36 +457,22 @@ body {
     color: #6b7280;
 }
 
-/* Responsive Design */
-@media (max-width: 480px) {
-    .share-buttons {
-        gap: 10px;
-    }
-    
-    .share-button {
-        width: 44px;
-        height: 44px;
-    }
-    
-    .share-button svg {
-        width: 18px;
-        height: 18px;
-    }
-}
-
 /* Animation for share buttons */
 .share-button {
     animation: fadeIn 0.4s ease-out;
 }
 
+/* Animation for share buttons */
 .share-button:nth-child(1) {
     animation-delay: 0.05s;
 }
 
+/* Animation for share buttons */
 .share-button:nth-child(2) {
     animation-delay: 0.1s;
 }
 
+/* Animation for share buttons */
 .share-button:nth-child(3) {
     animation-delay: 0.15s;
 }

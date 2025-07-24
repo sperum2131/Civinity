@@ -4,29 +4,37 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Civinity | Dashboard</title>
+
+    <!-- Linking relevant files-->
     <link rel="stylesheet" href="dashboard.css">
     <link rel="stylesheet" href="nav-bar.css">
     <link rel="website icon" type="image/png" href="icon.png">
     <script src="dashboard.js" defer></script>
 </head>
 <body>
+    <!-- Navigation Bar -->
     <nav class="navbar">
-        <div class="nav-brand">
+        <div class="nav-civinity">
             <img src="icon.png" alt="Civinity Logo" class="nav-logo">
             <span class="nav-text">Civinity</span>
         </div>
-        <div class="nav-links">
+        <div class="nav-pages">
             <a href="dashboard.html" class="nav-link">Dashboard</a>
             <a href="political-spectrum.html" class="nav-link">Political Spectrum</a>
             <a href="quiz.html" class="nav-link">Take the Quiz</a>
             <a href="debate.html" class="nav-link">Debate</a>
         </div>
     </nav>
+
+    <!-- Dashboard container -->
     <div class="container">
+        <!-- Title and description -->
         <h1 class="title">Dashboard</h1>
         <p class="description">
             Explore your political views and find public figures/news sources that align with your views.
         </p>
+
+        <!-- Profile info based on quiz results -->
         <div class="profile-info">
             <div class="profile-info-item">
                 <h2 class="profile-info-item-title" id="politicalOrientationTitle">Political Orientation:</h2>
@@ -38,23 +46,27 @@
             <div class="profile-info-item">
                 <h2 class="profile-info-item-title" id="descriptionTitle">Description:</h2>
                 <input type="text" class="profile-info-item-input" id="descriptionInput" readonly>
-                <button class="profile-info-item-button" id="editDescription">Retake Quiz</button>
+                <a href="quiz.html">
+                    <button class="profile-info-item-button" id="editDescription">Retake Quiz</button>
+                </a>
             </div>
         </div>
         
+        <!-- Public figures with similar views based on quiz results -->
         <div class="public-figures-section">
             <h2 class="section-title">Public Figures Aligned with Your Views</h2>
             <p class="section-description">Based on your political orientation, here are some public figures who share similar perspectives:</p>
             <div class="figures-grid" id="figuresGrid">
-                <!-- Figures will be populated by JavaScript -->
+                <!-- Figures go here -->
             </div>
         </div>
         
+        <!-- News sources with similar views based on quiz results -->
         <div class="news-sources-section">
             <h2 class="section-title">News Sources Aligned with Your Views</h2>
             <p class="section-description">Stay informed with news sources that share your perspective:</p>
             <div class="sources-grid" id="sourcesGrid">
-                <!-- News sources will be populated by JavaScript -->
+                <!-- News sources go here -->
             </div>
         </div>
     </div>

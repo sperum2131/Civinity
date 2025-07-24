@@ -1,3 +1,4 @@
+/* Navigation bar */
 .navbar {
     position: fixed;
     top: 0;
@@ -14,17 +15,20 @@
     align-items: center;
 }
 
-.nav-brand {
+/* Civinity logo */
+.nav-civinity {
     display: flex;
     align-items: center;
     gap: 12px;
 }
 
+/* Logo */
 .nav-logo {
     height: 50px;
     width: auto;
 }
 
+/* Text */
 .nav-text {
     font-family: 'Figtree', sans-serif;
     font-size: 1.25rem;
@@ -32,7 +36,8 @@
     color: #1a1a1a;
 } 
 
-.nav-links a {
+/* Pages */
+.nav-pages a {
     text-decoration: none;
     color: #1a1a1a;
     font-family: 'Figtree', sans-serif;
@@ -41,17 +46,21 @@
     margin-left: 20px;
     transition: 0.2s ease;
 }
-.nav-links a {
+
+/* Each page */
+.nav-pages a {
     position: relative;
     text-decoration: none;
     overflow: hidden;
 }
 
-.nav-links a:hover {
+/* Hover effect for each page */
+.nav-pages a:hover {
     color: #6b7280;
 }
 
-.nav-links {
+/* Pages */
+.nav-pages {
     margin-right: 20px;
     display: flex;
     flex-direction: row;

@@ -13,7 +13,7 @@ document.querySelectorAll('.question-option').forEach(option => {
     });
 });
 
-// Clear responses button functionality
+// Clear responses when clicked
 document.getElementById('clearBtn').addEventListener('click', function() {
     const allRadioButtons = document.querySelectorAll('input[type="radio"]');
     allRadioButtons.forEach(radio => {
@@ -32,11 +32,12 @@ document.getElementById('clearBtn').addEventListener('click', function() {
     });
 });
 
-// Submit quiz button functionality
+// Submit quiz when clicked
 document.getElementById('submitBtn').addEventListener('click', function() {
     const allRadioButtons = document.querySelectorAll('input[type="radio"]');
     const checkedButtons = document.querySelectorAll('input[type="radio"]:checked');
     
+    // If not all questions are answered, show an error
     if (checkedButtons.length < allRadioButtons.length / 3) {
         // Remove any existing unanswered classes first
         document.querySelectorAll('.question-option').forEach(option => {
@@ -44,6 +45,7 @@ document.getElementById('submitBtn').addEventListener('click', function() {
         });
         
         // Find unanswered questions and add unanswered class to their options
+        // This is so the user can see which questions they need to answer
         const questions = document.querySelectorAll('.question');
         let firstUnansweredQuestion = null;
         
@@ -79,7 +81,7 @@ document.getElementById('submitBtn').addEventListener('click', function() {
     const result = calculatePoliticalOrientation();
     
     if (result) {
-        // Save to localStorage with reversed score
+        // Save the result to localStorage
         const resultWithReversedScore = {
             ...result,
             score: result.score * -1
@@ -127,11 +129,12 @@ const politicalCategories = {
     'strong-conservative': { range: [-1.00, -0.75], label: 'Strong Conservative', description: 'Strong alignment with traditional/conservative values.' }
 };
 
+// Calculate political orientation based on the answers
 function calculatePoliticalOrientation() {
     let totalScore = 0;
     let answeredQuestions = 0;
     
-    // Calculate score for each answered question
+    
     Object.keys(questionLeanings).forEach(questionName => {
         const radioButtons = document.querySelectorAll(`input[name="${questionName}"]`);
         const checkedButton = document.querySelector(`input[name="${questionName}"]:checked`);
@@ -153,6 +156,7 @@ function calculatePoliticalOrientation() {
         }
     });
     
+    // If no questions are answered, return null
     if (answeredQuestions === 0) {
         return null;
     }
@@ -176,12 +180,13 @@ function calculatePoliticalOrientation() {
     return null;
 }
 
+// Display results when clicked
 function displayResults(result) {
     const scorePercent = (result.score * 100).toFixed(0);
     
-    // Generate shareable link with results
+    // Generate shareable link with results - this is so the user can share their results with others
     const resultData = {
-        score: result.score, // This is already the reversed score from above
+        score: result.score,
         label: result.label,
         category: result.category,
         description: result.description
@@ -189,28 +194,32 @@ function displayResults(result) {
     const encodedResult = btoa(JSON.stringify(resultData));
     const shareableLink = `${window.location.origin}${window.location.pathname}?result=${encodedResult}`;
     
+    // Reddit shareable link
     const redditTitle = encodeURIComponent(`My Civinity Quiz Result: ${scorePercent}%. Apparently, I'm a ${result.label}.`);
     const redditBody = encodeURIComponent(shareableLink);
     const redditURL = `https://www.reddit.com/submit?url=${redditBody}&title=${redditTitle}`;
 
+    // Twitter shareable link
     const tweetText = `I just took the Civinity quiz and got a score of ${scorePercent}%! Apparently I'm a ${result.label}. Check it out at ${shareableLink}`;
     const encodedTweetText = encodeURIComponent(tweetText);
     const twitterURL = `https://twitter.com/intent/tweet?text=${encodedTweetText}`;
 
+    // WhatsApp shareable link
     const whatsappText = `I just took the Civinity quiz and got a score of ${scorePercent}%! Apparently I'm a ${result.label}. Check it out at ${shareableLink}`;
     const encodedWhatsappText = encodeURIComponent(whatsappText);
     const whatsappURL = `https://wa.me/?text=${encodedWhatsappText}`;
 
+    // Create modal
     const modal = document.createElement('div');
     modal.className = 'results-modal';
     modal.innerHTML = `
         <div class="results-content">
-            <h2>Your Political Orientation</h2>
+            <h2>Your Political Orientation</h2> <!-- Title -->
             <div class="result-category">
                 <h3>${result.label}</h3>
                 <p>${result.description}</p>
-                <div class="score-display">
-                    <span>Score: ${scorePercent}%</span>
+                <div class="score-display"> <!-- Score display -->
+                    <span>Score: ${scorePercent}%</span> <!-- Score percentage -->
                     <div class="spectrum-bar">
                         <div class="spectrum-fill" style="left: ${((result.score + 1) / 2) * 100}%"></div>
                     </div>
@@ -219,7 +228,7 @@ function displayResults(result) {
                         <span>Conservative</span>
                     </div>
                 </div>
-                <div class="share-buttons">
+                <div class="share-buttons"> <!-- Share buttons -->
                     <a href="${twitterURL}" target="_blank" class="share-button">
 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="50" height="50" viewBox="0 0 256 256" xml:space="preserve">
 <g style="stroke: none; stroke-width: 0; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: none; fill-rule: nonzero; opacity: 1;" transform="translate(1.4065934065934016 1.4065934065934016) scale(2.81 2.81)">
@@ -245,7 +254,7 @@ function displayResults(result) {
 </g>
 </svg>
                     </a>
-                    <button class="share-button copy-link-btn" onclick="copyShareableLink('${shareableLink}')" title="Copy link">
+                    <button class="share-button copy-link-btn" onclick="copyShareableLink('${shareableLink}')" title="Copy link"> <!-- Copy link button --> 
                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                             <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
                             <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
@@ -253,16 +262,17 @@ function displayResults(result) {
                     </button>
                 </div>
             </div>
-            <a href="dashboard.html" style="text-decoration: none;">
+            <a href="dashboard.html" style="text-decoration: none;"> <!-- Go to dashboard button -->
                 <button class="btn btn-secondary">Go to Dashboard</button>
             </a>
-            <button class="btn btn-primary" onclick="closeResults()">Close</button>
+            <button class="btn btn-primary" onclick="closeResults()">Close</button> <!-- Close button -->
         </div>
     `;
 
     document.body.appendChild(modal);
 }
 
+// Close results when clicked
 function closeResults() {
     const modal = document.querySelector('.results-modal');
     if (modal) {
@@ -270,7 +280,7 @@ function closeResults() {
     }
 }
 
-// Copy shareable link to clipboard
+// Copy shareable link to clipboard when clicked
 function copyShareableLink(link) {
     navigator.clipboard.writeText(link).then(() => {
         // Show success feedback
@@ -292,7 +302,7 @@ function copyShareableLink(link) {
     });
 }
 
-// Check for shared results on page load
+// Check for shared results on page load - this is so the user can share their results with others
 document.addEventListener('DOMContentLoaded', function() {
     const urlParams = new URLSearchParams(window.location.search);
     const resultParam = urlParams.get('result');

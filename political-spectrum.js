@@ -1,10 +1,8 @@
-// Interactive Political Spectrum
+// Interactive political spectrum slider
 document.addEventListener('DOMContentLoaded', function() {
     const spectrumBar = document.querySelector('.spectrum-bar');
     const spectrumMarker = document.getElementById('spectrumMarker');
     const spectrumPosition = document.getElementById('spectrumPosition');
-    
-    if (!spectrumBar || !spectrumMarker || !spectrumPosition) return;
     
     // Initialize marker at center
     let isDragging = false;
@@ -26,7 +24,7 @@ document.addEventListener('DOMContentLoaded', function() {
     document.addEventListener('mousemove', drag);
     document.addEventListener('mouseup', stopDragging);
     
-    // Touch events for mobile
+    // Touch events for mobile support in the future
     spectrumMarker.addEventListener('touchstart', startDragging);
     document.addEventListener('touchmove', drag);
     document.addEventListener('touchend', stopDragging);
@@ -35,17 +33,20 @@ document.addEventListener('DOMContentLoaded', function() {
     spectrumBar.addEventListener('click', handleSpectrumClick);
     spectrumBar.addEventListener('touchend', handleSpectrumClick);
     
+    // Start dragging
     function startDragging(e) {
         isDragging = true;
         e.preventDefault();
         spectrumMarker.style.transition = 'none'; // Remove transition during drag
     }
     
+    // Stop dragging
     function stopDragging() {
         isDragging = false;
         spectrumMarker.style.transition = 'left 0.1s ease'; // Restore smooth transition
     }
     
+    // Drag the slider
     function drag(e) {
         if (!isDragging) return;
         
@@ -57,6 +58,7 @@ document.addEventListener('DOMContentLoaded', function() {
         updateMarkerPosition(Math.max(0, Math.min(100, position)));
     }
     
+    // Click on the spectrum bar
     function handleSpectrumClick(e) {
         const rect = spectrumBar.getBoundingClientRect();
         const clientX = e.type === 'click' ? e.clientX : e.changedTouches[0].clientX;
@@ -65,6 +67,7 @@ document.addEventListener('DOMContentLoaded', function() {
         updateMarkerPosition(Math.max(0, Math.min(100, position)));
     }
     
+    // Update the marker position
     function updateMarkerPosition(position) {
         currentPosition = position;
         spectrumMarker.style.left = position + '%';
@@ -73,6 +76,7 @@ document.addEventListener('DOMContentLoaded', function() {
         let label = '';
         let color = '';
         
+        // Specific labels and colors for each position
         if (position < 20) {
             label = 'Strong Liberal';
             color = '#1e40af';
@@ -97,6 +101,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
     
+    // Smooth animation that makes it so satisfying
     function animateLabelChange(newLabel, newColor) {
         const currentSpan = spectrumPosition.querySelector('.current');
         const newSpan = document.createElement('span');
@@ -135,6 +140,7 @@ const observerOptions = {
     rootMargin: '0px 0px -50px 0px'
 };
 
+// Add scroll animations for sections
 const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
         if (entry.isIntersecting) {

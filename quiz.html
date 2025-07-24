@@ -4,29 +4,38 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Civinity | Quiz</title>
+
+    <!-- Link relevant files -->
     <link rel="stylesheet" href="quiz.css">
     <link rel="stylesheet" href="nav-bar.css">
     <link rel="website icon" type="image/png" href="icon.png">
     <script src="quiz.js" defer></script>
 </head>
 <body>
+    <!-- Navigation bar -->
     <nav class="navbar">
-        <div class="nav-brand">
+        <div class="nav-civinity">
             <img src="icon.png" alt="Civinity Logo" class="nav-logo">
             <span class="nav-text">Civinity</span>
         </div>
-        <div class="nav-links">
+        <div class="nav-pages">
             <a href="dashboard.html" class="nav-link">Dashboard</a>
             <a href="political-spectrum.html" class="nav-link">Political Spectrum</a>
             <a href="quiz.html" class="nav-link">Take the Quiz</a>
             <a href="debate.html" class="nav-link">Debate</a>
         </div>
     </nav>
+
+    <!-- Quiz container -->
     <div class="container">
+        <!-- Title -->
         <h1 class="title">Take the Quiz</h1>
+        <!-- Description -->
         <p class="description">
             Understand and explore your political views with this 10-question quiz.
         </p>
+
+        <!-- Questions container -->
         <div class="questions-container">
             <div class="question">
                 <h2 class="question-title">The government should provide universal healthcare, even if it means raising taxes.</h2>
@@ -209,9 +218,11 @@
                 </div>
             </div>
         </div>
+
+        <!-- Buttons container -->
         <div class="button-container">
-            <button class="btn btn-secondary" id="clearBtn">Clear Responses</button>
-            <button class="btn btn-primary" id="submitBtn">Submit Quiz</button>
+            <button class="btn btn-secondary" id="clearBtn">Clear Responses</button> <!-- Clear responses button -->
+            <button class="btn btn-primary" id="submitBtn">Submit Quiz</button> <!-- Submit quiz button -->
         </div>
     </div>
     </div>

@@ -1,5 +1,7 @@
+/* Importing Figtree font */
 @import url('https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300..900;1,300..900&display=swap');
 
+/* Removing default styling */
 * {
     margin: 0;
     padding: 0;
@@ -7,12 +9,14 @@
     font-weight: 400;
 }
 
+/* Remove arrows from number input */
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
 
+/* Setting background with gray lines for aesthetic effect */
 body {
     background-color: #ffffff;
     color: #1a1a1a;
@@ -23,6 +27,7 @@ body {
     background-position: 0 0;
 }
 
+/* Container for the debate */
 .container {
     display: flex;
     flex-direction: column;
@@ -35,6 +40,7 @@ body {
     margin: 0 auto;
 }
 
+/* Title of the debate - big emphasis */
 .title {
     font-family: 'Figtree', sans-serif;
     font-size: 2.5rem;
@@ -50,6 +56,7 @@ body {
     margin-top: 30px;
 }
 
+/* Description of the debate - grayed out */
 .description {
     font-family: 'Figtree', sans-serif;
     font-size: 1.1rem;
@@ -61,13 +68,14 @@ body {
     animation: slideUp 0.4s ease-out 0.1s both;
 }
 
-/* Debate Setup */
+/* First, the user chooses a topic to debate */
 .debate-setup {
     width: 100%;
     max-width: 1200px;
     animation: slideUp 0.4s ease-out 0.2s both;
 }
 
+/* Card for the topic selection */
 .setup-card {
     background: white;
     border-radius: 16px;
@@ -76,6 +84,7 @@ body {
     border: 1px solid #e5e7eb;
 }
 
+/* Title of the topic selection */
 .setup-card h2 {
     font-size: 2rem;
     text-align: center;
@@ -84,6 +93,7 @@ body {
     font-weight: 600;
 }
 
+/* Grid for the topic selection which makes it look way neater */
 .topic-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -91,6 +101,7 @@ body {
     margin-bottom: 40px;
 }
 
+/* Button for each topic */
 .topic-btn {
     background: white;
     border: 2px solid #e5e7eb;
@@ -103,17 +114,20 @@ body {
     color: inherit;
 }
 
+/* Hover effect for the topic button */
 .topic-btn:hover {
     border-color: #000000;
     transform: translateY(-3px);
     box-shadow: 0 12px 30px -8px rgba(0, 0, 0, 0.25);
 }
 
+/* Selected topic button */
 .topic-btn.selected {
     border-color: #000000;
     background: #f8f9fa;
 }
 
+/* Icon for each topic */
 .topic-icon {
     font-size: 2.5rem;
     margin-bottom: 15px;
@@ -165,11 +179,11 @@ body {
 }
 
 .topic-btn[data-topic="guns"] .topic-icon {
-    color: #6b7280;
+    color: #e14141;
 }
 
 .topic-btn[data-topic="guns"]:hover .topic-icon {
-    color: #4b5563;
+    color: #ca3131;
 }
 
 .topic-btn[data-topic="abortion"] .topic-icon {
@@ -196,6 +210,7 @@ body {
     color: #0f766e;
 }
 
+/* Title of each topic */
 .topic-btn h3 {
     font-size: 1.2rem;
     margin-bottom: 8px;
@@ -208,6 +223,7 @@ body {
     color: #000000;
 }
 
+/* Description of each topic */
 .topic-btn p {
     color: #6b7280;
     font-size: 0.9rem;
@@ -219,6 +235,7 @@ body {
     color: #374151;
 }
 
+/* Make sure everyone understands to be respectful */
 .debate-rules {
     background: #ffffff;
     border-radius: 12px;
@@ -228,11 +245,13 @@ body {
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
+/* Hover effect for the debate rules */
 .debate-rules:hover {
     box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
     border-color: #d1d5db;
 }
 
+/* Title of the debate rules */
 .debate-rules h3 {
     font-size: 1.3rem;
     margin-bottom: 20px;
@@ -241,6 +260,7 @@ body {
     text-align: center;
 }
 
+/* List of rules */
 .debate-rules ul {
     list-style: none;
     display: flex;
@@ -248,6 +268,7 @@ body {
     gap: 12px;
 }
 
+/* Each rule */
 .debate-rules li {
     padding: 12px 16px;
     color: #374151;
@@ -261,6 +282,7 @@ body {
     border: 1px solid #e5e7eb;
 }
 
+/* Hover effect for each rule */
 .debate-rules li:hover {
     color: #1a1a1a;
     background: #f1f5f9;
@@ -268,6 +290,7 @@ body {
     transform: translateX(2px);
 }
 
+/* Icon for each rule */
 .debate-rules li svg {
     color: #059669;
     flex-shrink: 0;
@@ -276,18 +299,20 @@ body {
     height: 18px;
 }
 
+/* Hover effect for the icon */
 .debate-rules li:hover svg {
     color: #047857;
     transform: scale(1.1);
 }
 
-/* Debate Interface */
+/* Set up the debate interface */
 .debate-interface {
     width: 100%;
     max-width: 1200px;
     animation: slideUp 0.4s ease-out 0.3s both;
 }
 
+/* Header for the debate */
 .debate-header {
     display: flex;
     justify-content: space-between;
@@ -299,6 +324,7 @@ body {
     border-bottom: none;
 }
 
+/* Title of the debate */
 .debate-info h2 {
     font-size: 1.8rem;
     margin-bottom: 8px;
@@ -306,11 +332,13 @@ body {
     font-weight: 600;
 }
 
+/* Description of the debate */
 .debate-info p {
     color: #6b7280;
     font-size: 1rem;
 }
 
+/* Button to start a new debate */
 .new-debate-btn {
     background: #000000;
     color: #ffffff;
@@ -324,6 +352,7 @@ body {
     font-family: 'Figtree', sans-serif;
 }
 
+/* Hover effect for the button */
 .new-debate-btn:hover {
     background: #1a1a1a;
     border-color: #1a1a1a;
@@ -331,7 +360,7 @@ body {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-/* Chat Container */
+/* Chat container */
 .chat-container {
     background: white;
     border: 1px solid #e5e7eb;
@@ -341,6 +370,7 @@ body {
     flex-direction: column;
 }
 
+/* Chat messages */
 .chat-messages {
     flex: 1;
     overflow-y: auto;
@@ -351,24 +381,29 @@ body {
     background: #fafafa;
 }
 
+/* Scrollbar for the chat messages */
 .chat-messages::-webkit-scrollbar {
     width: 8px;
 }
 
+/* Track for the scrollbar */
 .chat-messages::-webkit-scrollbar-track {
     background: #f1f1f1;
     border-radius: 4px;
 }
 
+/* Thumb for the scrollbar */
 .chat-messages::-webkit-scrollbar-thumb {
     background: #c1c1c1;
     border-radius: 4px;
 }
 
+/* Hover effect for the thumb */
 .chat-messages::-webkit-scrollbar-thumb:hover {
     background: #a8a8a8;
 }
 
+/* Each message */
 .message {
     display: flex;
     gap: 15px;
@@ -376,6 +411,7 @@ body {
     animation: messageSlide 0.3s ease-out;
 }
 
+/* Animation for the message */
 @keyframes messageSlide {
     from {
         opacity: 0;
@@ -387,15 +423,18 @@ body {
     }
 }
 
+/* User messages are aligned to the right */
 .message.user-message {
     align-self: flex-end;
     flex-direction: row-reverse;
 }
 
+/* Message from AI are aligned to the left */
 .message.ai-message {
     align-self: flex-start;
 }
 
+/* Avatar for each message */
 .message-avatar {
     width: 50px;
     height: 50px;
@@ -414,22 +453,26 @@ body {
     color: white;
 }
 
+/* Avatar for AI messages */
 .ai-message .message-avatar {
     background: #f3f4f6;
     color: #374151;
 }
 
+/* Hover effect for the avatar */
 .message-avatar:hover {
     transform: scale(1.05);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
 }
 
+/* Icon for the avatar */
 .message-avatar svg {
     width: 24px;
     height: 24px;
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
+/* Content of each message */
 .message-content {
     background: #f8fafc;
     padding: 12px 16px;
@@ -442,16 +485,19 @@ body {
     width: fit-content;
 }
 
+/* Hover effect for the content */
 .message-content:hover {
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
+/* Content of user messages */
 .user-message .message-content {
     background: #6b7280;
     color: white;
     border-color: #6b7280;
 }
 
+/* Paragraph for each message */
 .message-content p {
     margin: 0;
     line-height: 1.6;
@@ -460,13 +506,14 @@ body {
     overflow-wrap: break-word;
 }
 
-/* AI Message Content Styling */
+/* Content of AI messages */
 .ai-message .message-content {
     background: white;
     border: 1px solid #e5e7eb;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
 }
 
+/* Paragraph for each AI message */
 .ai-message .message-content p {
     margin: 0 0 12px 0;
     line-height: 1.6;
@@ -474,18 +521,19 @@ body {
     font-size: 1rem;
 }
 
+/* Last paragraph for each AI message */
 .ai-message .message-content p:last-child {
     margin-bottom: 0;
 }
 
-/* Bold text styling */
+/* Bold text for each AI message */
 .ai-message .message-content strong,
 .ai-message .message-content b {
     font-weight: 700;
     color: #1a1a1a;
 }
 
-/* Headers in AI messages */
+/* Headers for each AI message */
 .ai-message .message-content h3,
 .ai-message .message-content h4 {
     font-weight: 700;
@@ -494,25 +542,27 @@ body {
     font-size: 1.2rem;
 }
 
+/* First header for each AI message */
 .ai-message .message-content h3:first-child,
 .ai-message .message-content h4:first-child {
     margin-top: 0;
 }
 
-/* Bullet points and lists */
+/* Bullet points and lists for each AI message */
 .ai-message .message-content ul,
 .ai-message .message-content ol {
     margin: 12px 0 16px 0;
     padding-left: 25px;
 }
 
+/* Each bullet point */
 .ai-message .message-content li {
     margin: 6px 0;
     line-height: 1.6;
     color: #374151;
 }
 
-/* Fact check styling */
+/* Fact check for each AI message */
 .ai-message .message-content .fact-check {
     background: #f8fafc;
     border-left: 4px solid #2563eb;
@@ -522,18 +572,20 @@ body {
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
+/* Hover effect for the fact check */
 .ai-message .message-content .fact-check:hover {
     background: #f1f5f9;
     border-left-color: #1d4ed8;
 }
 
+/* Title of the fact check */
 .ai-message .message-content .fact-check h4 {
     margin: 0 0 12px 0;
     color: #2563eb;
     font-size: 1.1rem;
 }
 
-/* Source citations */
+/* Source citations for each AI message */
 .ai-message .message-content .source {
     font-size: 0.9rem;
     color: #6b7280;
@@ -541,7 +593,7 @@ body {
     margin-top: 6px;
 }
 
-/* Statistics and numbers */
+/* Statistics and numbers for each AI message */
 .ai-message .message-content .stat {
     font-weight: 600;
     color: #059669;
@@ -557,19 +609,20 @@ body {
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
+/* Hover effect for the quote */
 .ai-message .message-content blockquote:hover {
     border-left-color: #d1d5db;
     background: #f9fafb;
 }
 
-/* Section dividers */
+/* Section dividers for each AI message */
 .ai-message .message-content .section {
     border-top: 1px solid #e5e7eb;
     padding-top: 16px;
     margin-top: 16px;
 }
 
-/* Highlight important points */
+/* Highlight important points for each AI message */
 .ai-message .message-content .highlight {
     background: #fef3c7;
     padding: 3px 6px;
@@ -578,6 +631,7 @@ body {
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
+/* Hover effect for the highlight */
 .ai-message .message-content .highlight:hover {
     background: #fde68a;
 }
@@ -589,6 +643,7 @@ body {
     background: white;
 }
 
+/* Input wrapper */
 .input-wrapper {
     display: flex;
     gap: 12px;
@@ -600,12 +655,14 @@ body {
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
+/* Focus effect for the input wrapper */
 .input-wrapper:focus-within {
     border-color: #000000;
     box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.1);
     background: #ffffff;
 }
 
+/* Input box */
 .message-input {
     flex: 1;
     padding: 14px 18px;
@@ -623,19 +680,23 @@ body {
     outline: none;
 }
 
+/* Focus effect for the input box */
 .message-input:focus {
     outline: none;
 }
 
+/* Placeholder for the input box */
 .message-input::placeholder {
     color: #9ca3af;
     transition: color 0.3s ease;
 }
 
+/* Focus effect for the placeholder */
 .input-wrapper:focus-within .message-input::placeholder {
     color: #6b7280;
 }
 
+/* Send button */
 .send-btn {
     background: #000000;
     color: #ffffff;
@@ -655,10 +716,12 @@ body {
     margin-right: 2px;
 }
 
+/* Hover effect for the send button */
 .send-btn:hover {
     box-shadow: 0 8px 24px 0 rgba(107, 114, 128, 0.25);
 }
 
+/* Active effect for the send button */
 .send-btn:active {
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
@@ -670,6 +733,7 @@ body {
     box-shadow: none;
 }
 
+/* Icon for the send button */
 .send-btn svg {
     width: 20px;
     height: 20px;
@@ -678,10 +742,12 @@ body {
     z-index: 1;
 }
 
+/* Hover effect for the icon */
 .send-btn:hover svg {
     transform: scale(1.1);
 }
 
+/* Input tips */
 .input-tips {
     margin-top: 15px;
     text-align: center;
@@ -691,6 +757,7 @@ body {
     gap: 8px;
 }
 
+/* Each tip */
 .input-tips span {
     font-size: 0.9rem;
     color: #6b7280;
@@ -704,11 +771,13 @@ body {
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
+/* Hover effect for the tip */
 .input-tips span:hover {
     background: #f1f5f9;
     transform: translateY(-1px);
 }
 
+/* Icon for the tip */
 .input-tips svg {
     color: #f59e0b;
     width: 16px;
@@ -716,12 +785,13 @@ body {
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
+/* Hover effect for the icon */
 .input-tips span:hover svg {
     color: #d97706;
     transform: scale(1.1);
 }
 
-/* Debate Tools */
+/* Quick buttons the user can press to ask prompts */
 .debate-tools {
     background: white;
     border: 1px solid #e5e7eb;
@@ -734,6 +804,7 @@ body {
     flex-wrap: wrap;
 }
 
+/* Each button */
 .tool-btn {
     background: #ffffff;
     color: #000000;
@@ -750,6 +821,7 @@ body {
     font-family: 'Figtree', sans-serif;
 }
 
+/* Hover effect for the button */
 .tool-btn:hover {
     background: #000000;
     color: #ffffff;
@@ -757,17 +829,19 @@ body {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
+/* Icon for the button */
 .tool-btn svg {
     width: 18px;
     height: 18px;
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
+/* Hover effect for the icon */
 .tool-btn:hover svg {
     transform: scale(1.1);
 }
 
-/* Loading States */
+/* Loading states */
 .loading {
     display: flex;
     align-items: center;
@@ -776,11 +850,13 @@ body {
     font-size: 0.95rem;
 }
 
+/* Loading dots */
 .loading-dots {
     display: flex;
     gap: 4px;
 }
 
+/* Each dot */
 .loading-dots span {
     width: 8px;
     height: 8px;
@@ -797,7 +873,7 @@ body {
     40% { transform: scale(1); }
 }
 
-/* Animations */
+/* Slide up animation to make it look smooth at beginning */
 @keyframes slideUp {
     from {
         opacity: 0;
@@ -806,67 +882,5 @@ body {
     to {
         opacity: 1;
         transform: translateY(0);
-    }
-}
-
-/* Responsive Design */
-@media (max-width: 768px) {
-    .container {
-        padding: 80px 15px 40px 15px;
-    }
-    
-    .title {
-        font-size: 2rem;
-    }
-    
-    .setup-card {
-        padding: 25px;
-    }
-    
-    .topic-grid {
-        grid-template-columns: 1fr;
-    }
-    
-    .debate-header {
-        flex-direction: column;
-        gap: 15px;
-        text-align: center;
-        padding: 25px 20px;
-    }
-    
-    .message {
-        max-width: 95%;
-    }
-    
-    .debate-tools {
-        flex-direction: column;
-        align-items: center;
-    }
-    
-    .tool-btn {
-        width: 100%;
-        justify-content: center;
-    }
-    
-    .chat-container {
-        height: 600px;
-    }
-    
-    .chat-messages {
-        padding: 20px;
-    }
-    
-    .chat-input-container {
-        padding: 20px;
-    }
-    
-    .message-input {
-        min-height: 50px;
-    }
-    
-    .send-btn {
-        min-width: 50px;
-        height: 50px;
-        padding: 15px;
     }
 }

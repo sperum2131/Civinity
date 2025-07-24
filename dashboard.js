@@ -1,16 +1,15 @@
-// Load political orientation from localStorage
+// When the page loads the local storage is checked for the political orientation
 function loadPoliticalOrientation() {
     const savedOrientation = localStorage.getItem('politicalOrientation');
     const politicalOrientationInput = document.getElementById('politicalOrientationInput');
     
     if (savedOrientation) {
         try {
-            const orientation = JSON.parse(savedOrientation);
-            politicalOrientationInput.value = orientation.label;
+            const orientation = JSON.parse(savedOrientation); // Parse the JSON object 'savedOrientation'
+            politicalOrientationInput.value = orientation.label; // Set the value of the input to the label of the orientation
             
-            // Apply CSS class based on political orientation
+            // Choose specific CSS class based on the orientation
             politicalOrientationInput.classList.remove('liberal', 'moderate', 'conservative');
-            
             if (orientation.category.includes('liberal')) {
                 politicalOrientationInput.classList.add('liberal');
             } else if (orientation.category.includes('conservative')) {
@@ -26,22 +25,22 @@ function loadPoliticalOrientation() {
     }
 }
 
-// Initialize political orientation on page load
+// Run the function
 loadPoliticalOrientation();
 
+// When the page loads the local storage is checked for the description
 function loadDescription() {
     const savedDescription = localStorage.getItem('politicalOrientation');
     const descriptionInput = document.getElementById('descriptionInput');
 
     if (savedDescription) {
         try {
-            const description = JSON.parse(savedDescription);
-            const descriptionText = description.description;
-            descriptionInput.value = descriptionText;
+            const description = JSON.parse(savedDescription); // Parse the JSON object 'savedDescription'
+            const descriptionText = description.description; // Set the value of the input to the description of the orientation
+            descriptionInput.value = descriptionText; // Set the value of the input to the description of the orientation
             
-            // Apply CSS class based on political orientation
+            // Choose specific CSS class based on the orientation
             descriptionInput.classList.remove('liberal', 'moderate', 'conservative');
-            
             if (description.category.includes('liberal')) {
                 descriptionInput.classList.add('liberal');
             } else if (description.category.includes('conservative')) {
@@ -50,18 +49,23 @@ function loadDescription() {
                 descriptionInput.classList.add('moderate');
             }
         } catch (error) {
-            descriptionInput.value = 'Not Available';
+            descriptionInput.value = 'Not Available'; // Happens if no quiz is taken
         }
     } else {
         descriptionInput.value = 'Not Available';
     }
 }
 
-// Initialize description on page load
+// Run the function
 loadDescription();
 
 // Public figures database organized by political orientation
+// Each category has a different set of public figures
+// Used to display the public figures in the dashboard based on the quiz results
+// Each figure has a name, role, description, tags, avatar/color for backup, wikipedia link, and avatar image
 const publicFigures = {
+
+    // Strong liberal figures
     'strong-liberal': [
         {
             name: 'Bernie Sanders',
@@ -94,6 +98,8 @@ const publicFigures = {
             avatarImage: 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/6a/Elizabeth_Warren%2C_official_portrait%2C_114th_Congress.jpg/800px-Elizabeth_Warren%2C_official_portrait%2C_114th_Congress.jpg'
         }
     ],
+
+    // Moderate liberal figures
     'moderate-liberal': [
         {
             name: 'Joe Biden',
@@ -126,6 +132,8 @@ const publicFigures = {
             avatarImage: 'https://www.womenshistory.org/sites/default/files/styles/main_image/public/images/2018-07/Clinton_Hillary%20square.jpg'
         }
     ],
+
+    // Centrist figures
     'centrist': [
         {
             name: 'Joe Manchin',
@@ -158,6 +166,8 @@ const publicFigures = {
             avatarImage: 'https://upload.wikimedia.org/wikipedia/commons/0/0d/Lisa_Murkowski_official_photo.jpg'
         }
     ],
+
+    // Moderate conservative figures
     'moderate-conservative': [
         {
             name: 'Mitt Romney',
@@ -190,6 +200,8 @@ const publicFigures = {
             avatarImage: 'https://upload.wikimedia.org/wikipedia/commons/3/39/Charlie_Baker_official_photo_%28portrait_cropped%29.jpg'
         }
     ],
+
+    // Strong conservative figures
     'strong-conservative': [
         {
             name: 'Donald Trump',
@@ -224,36 +236,34 @@ const publicFigures = {
     ]
 };
 
-// Load and display public figures based on political orientation
+// Display the public figures in the dashboard based on the quiz results
 function loadPublicFigures() {
     const savedOrientation = localStorage.getItem('politicalOrientation');
     const figuresGrid = document.getElementById('figuresGrid');
     
-    if (!figuresGrid) return;
-    
     if (savedOrientation) {
         try {
-            const orientation = JSON.parse(savedOrientation);
-            const category = orientation.category;
-            const figures = publicFigures[category] || publicFigures['centrist'];
+            const orientation = JSON.parse(savedOrientation); // Parse the JSON object 'savedOrientation'
+            const category = orientation.category; // Get category
+            const figures = publicFigures[category] || publicFigures['centrist']; // Get figures from the category or the centrist figures if the category is not found
             
             // Determine the political class for styling
-            let politicalClass = 'moderate';
+            let politicalClass = 'moderate'; // Default to moderate
             if (category.includes('liberal')) {
-                politicalClass = 'liberal';
+                politicalClass = 'liberal'; // If the category includes liberal, set the political class to liberal
             } else if (category.includes('conservative')) {
-                politicalClass = 'conservative';
+                politicalClass = 'conservative'; // If the category includes conservative, set the political class to conservative
             }
             
+            // Map figures list to HTML with styling
             figuresGrid.innerHTML = figures.map(figure => `
                 <div class="figure-card">
                     <div class="figure-header">
                         <div class="figure-avatar" style="background-color: ${figure.color};">
-                            ${figure.avatarImage ? 
-                                `<img src="${figure.avatarImage}" alt="${figure.name}" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;">
-                                 <div style="display: none; width: 100%; height: 100%; align-items: center; justify-content: center; color: white; font-size: 1.5rem; font-weight: 400;">${figure.avatar}</div>` 
-                                : 
-                                `<div style="display: flex; width: 100%; height: 100%; align-items: center; justify-content: center; color: white; font-size: 1.5rem; font-weight: 400;">${figure.avatar}</div>`
+                            ${
+                                figure.avatarImage
+                                ? `<img src="${figure.avatarImage}" alt="${figure.name}" style="width:100%;height:100%;object-fit:cover;border-radius:50%;">`
+                                : `<div style="color:white;font-size:1.5rem;">${figure.avatar}</div>`
                             }
                         </div>
                         <div>
@@ -267,7 +277,7 @@ function loadPublicFigures() {
                     </div>
                     <div class="figure-actions">
                         <a href="${figure.wiki}" target="_blank" class="figure-link ${politicalClass}">
-                            Learn More on Wikipedia
+                            More on Wikipedia
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
                             </svg>
@@ -285,11 +295,16 @@ function loadPublicFigures() {
     }
 }
 
-// Initialize public figures on page load
+// Run the function
 loadPublicFigures();
 
 // News sources database organized by political orientation
+// Each category has a different set of news sources
+// Used to display the news sources in the dashboard based on the quiz results
+// Each source has a name, type, description, tags, logo, url, color, and avatar image
 const newsSources = {
+
+    // Strong liberal news sources
     'strong-liberal': [
         {
             name: 'The Young Turks',
@@ -322,6 +337,8 @@ const newsSources = {
             avatarImage: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTmE0GxFOZ_1DnWWzD731GaQCAmn9Gpmk5uSA&s'
         }
     ],
+
+    // Moderate liberal news sources
     'moderate-liberal': [
         {
             name: 'MSNBC',
@@ -354,6 +371,8 @@ const newsSources = {
             avatarImage: 'https://yt3.googleusercontent.com/vLilerbtRW24xDHhewrYej9OXaTWLBEAZ5qcJt5Qw6WeXrxcnE_pE2NYpE6h9P6HHWft2vnRbA=s900-c-k-c0x00ffffff-no-rj'
         }
     ],
+
+    // Centrist news sources
     'centrist': [
         {
             name: 'Reuters',
@@ -386,6 +405,8 @@ const newsSources = {
             avatarImage: 'https://media.licdn.com/dms/image/v2/D4E0BAQFMp_QONUrE4Q/company-logo_200_200/B4EZfVUv.zGcAQ-/0/1751630676290/bbc_logo?e=2147483647&v=beta&t=YoW0WCjIAFN98OkLtyLBHtQVQpx96pSX83jYbK_FqS8'
         }
     ],
+
+    // Moderate conservative news sources
     'moderate-conservative': [
         {
             name: 'The Wall Street Journal',
@@ -418,6 +439,8 @@ const newsSources = {
             avatarImage: 'https://play-lh.googleusercontent.com/cC7I7y18SRxHv0vorkzH6Lm2FWK-1rTVmTiIb2wjciyHllbM35VhW7PSMIhLCwGYMAs=w240-h480-rw'
         }
     ],
+
+    // Strong conservative news sources
     'strong-conservative': [
         {
             name: 'Breitbart',
@@ -452,37 +475,31 @@ const newsSources = {
     ]
 };
 
-// Load and display news sources based on political orientation
+// Display the news sources in the dashboard based on the quiz results
 function loadNewsSources() {
     const savedOrientation = localStorage.getItem('politicalOrientation');
     const sourcesGrid = document.getElementById('sourcesGrid');
     
-    if (!sourcesGrid) return;
-    
     if (savedOrientation) {
         try {
-            const orientation = JSON.parse(savedOrientation);
-            const category = orientation.category;
-            const sources = newsSources[category] || newsSources['centrist'];
+            const orientation = JSON.parse(savedOrientation); // Parse the JSON object 'savedOrientation'
+            const category = orientation.category; // Get category
+            const sources = newsSources[category] || newsSources['centrist']; // Get sources from the category or the centrist sources if the category is not found
             
             // Determine the political class for styling
-            let politicalClass = 'moderate';
+            let politicalClass = 'moderate'; // Default to moderate
             if (category.includes('liberal')) {
-                politicalClass = 'liberal';
+                politicalClass = 'liberal'; // If the category includes liberal, set the political class to liberal
             } else if (category.includes('conservative')) {
-                politicalClass = 'conservative';
+                politicalClass = 'conservative'; // If the category includes conservative, set the political class to conservative
             }
             
+            // Map sources list to HTML with styling
             sourcesGrid.innerHTML = sources.map(source => `
                 <a href="${source.url}" target="_blank" class="source-card">
                     <div class="source-header">
-                        <div class="source-logo" style="${source.avatarImage ? 'background-color: transparent;' : `background-color: ${source.color};`} overflow: hidden;">
-                            ${source.avatarImage ? 
-                                `<img src="${source.avatarImage}" alt="${source.name}" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'; this.parentElement.style.backgroundColor='${source.color}';" style="width: 100%; height: 100%; object-fit: cover; border-radius: 8px; position: absolute; top: 0; left: 0;">
-                                 <div style="display: none; width: 100%; height: 100%; align-items: center; justify-content: center; color: white; font-size: 1.2rem; font-weight: 400; position: absolute; top: 0; left: 0;">${source.logo}</div>` 
-                                : 
-                                `<div style="display: flex; width: 100%; height: 100%; align-items: center; justify-content: center; color: white; font-size: 1.2rem; font-weight: 400;">${source.logo}</div>`
-                            }
+                        <div class="source-logo" style="background-color: ${source.color}; overflow: hidden;">
+                            ${source.avatarImage ? `<img src="${source.avatarImage}" alt="${source.name}" style="width: 100%; height: 100%; object-fit: cover; border-radius: 8px; position: absolute; top: 0; left: 0;">` : `<div style="display: flex; width: 100%; height: 100%; align-items: center; justify-content: center; color: white; font-size: 1.2rem; font-weight: 400;">${source.logo}</div>`}
                         </div>
                         <div>
                             <div class="source-name">${source.name}</div>
@@ -511,5 +528,5 @@ function loadNewsSources() {
     }
 }
 
-// Initialize news sources on page load
+// Run the function
 loadNewsSources();

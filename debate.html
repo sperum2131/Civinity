@@ -4,34 +4,42 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Civinity | Debate</title>
+
+    <!-- Linking relevant files -->
     <link rel="stylesheet" href="debate.css">
     <link rel="stylesheet" href="nav-bar.css">
     <link rel="website icon" type="image/png" href="icon.png">
     <script src="debate.js" defer></script>
 </head>
 <body>
+    <!-- Navigation bar -->
     <nav class="navbar">
-        <div class="nav-brand">
+        <div class="nav-civinity">
             <img src="icon.png" alt="Civinity Logo" class="nav-logo">
             <span class="nav-text">Civinity</span>
         </div>
-        <div class="nav-links">
+        <div class="nav-pages">
             <a href="dashboard.html" class="nav-link">Dashboard</a>
             <a href="political-spectrum.html" class="nav-link">Political Spectrum</a>
             <a href="quiz.html" class="nav-link">Take the Quiz</a>
             <a href="debate.html" class="nav-link">Debate</a>
         </div>
     </nav>
+
+    <!-- Debate container -->
     <div class="container">
+        <!-- Title and description -->
         <h1 class="title">AI Debate Partner</h1>
         <p class="description">
             Practice healthy political discourse with an AI that takes the opposite position. Learn to understand different perspectives and improve your debate skills.
         </p>
         
-        <!-- Debate Setup -->
+        <!-- First, the user chooses a topic to debate-->
         <div class="debate-setup" id="debateSetup">
             <div class="setup-card">
                 <h2>Choose Your Debate Topic</h2>
+
+                <!-- Options for topics -->
                 <div class="topic-grid">
                     <button class="topic-btn" data-topic="healthcare">
                         <div class="topic-icon">
@@ -112,6 +120,7 @@
                     </button>
                 </div>
                 
+                <!-- Make sure everyone understands to be respectful -->
                 <div class="debate-rules">
                     <h3>Healthy Debate Guidelines</h3>
                     <ul>
@@ -150,7 +159,7 @@
             </div>
         </div>
 
-        <!-- Debate Interface -->
+        <!-- Set up the debate interface -->
         <div class="debate-interface" id="debateInterface" style="display: none;">
             <div class="debate-header">
                 <div class="debate-info">
@@ -160,6 +169,7 @@
                 <button class="new-debate-btn" onclick="startNewDebate()">New Debate</button>
             </div>
             
+            <!-- Chat box -->
             <div class="chat-container">
                 <div class="chat-messages" id="chatMessages">
                     <div class="message ai-message">
@@ -174,11 +184,12 @@
                     </div>
                 </div>
                 
+                <!-- Input box -->
                 <div class="chat-input-container">
                     <div class="input-wrapper">
                         <input 
                             id="messageInput" 
-                            placeholder="Type your argument here..." 
+                            placeholder="Enter your argument here..." 
                             class="message-input"
                             rows="3"
                         ></input>
@@ -186,6 +197,8 @@
                             <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#ffffff"><path d="M120-160v-240l320-80-320-80v-240l760 320-760 320Z"/></svg>
                         </button>
                     </div>
+
+                    <!-- Safe tip -->
                     <div class="input-tips">
                         <span>
                             <svg xmlns="http://www.w3.org/2000/svg" height="16px" viewBox="0 -960 960 960" width="16px" fill="currentColor">
@@ -197,6 +210,7 @@
                 </div>
             </div>
             
+            <!-- Quick buttons the user can press to ask prompts -->
             <div class="debate-tools">
                 <button class="tool-btn" onclick="requestFactCheck()">
                     <svg xmlns="http://www.w3.org/2000/svg" height="16px" viewBox="0 -960 960 960" width="16px" fill="currentColor">
