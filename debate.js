@@ -1,6 +1,15 @@
 // AI Debate Chatbot with Groq API
-const GROQ_API_KEY = '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'; // API key for Groq API
-const GROQ_API_URL = 'https://api.groq.com/openai/v1/chat/completions'; // Base URL for Groq API
+// Load configuration from config.js
+let GROQ_API_KEY, GROQ_API_URL;
+
+// Load config when the script loads
+(function loadConfig() {
+    // Try to load from config.js
+    if (typeof config !== 'undefined') {
+        GROQ_API_KEY = config.GROQ_API_KEY;
+        GROQ_API_URL = config.GROQ_API_URL;
+    }
+})();
 
 // Debate state
 let currentTopic = '';
